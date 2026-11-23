@@ -1,8 +1,8 @@
-name: Baseline checks
+name: Attendance checks
 
 on:
   push:
-    branches: [rsi/0]
+    branches: ['rsi/**']
   workflow_dispatch:
 
 jobs:

@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ระบบเข้า-ออกงาน</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">ATTENDANCE / LOCAL APP</p>
+        <h1>ระบบเข้า-ออกงาน</h1>
+        <p>บันทึกเวลาและดูสรุปการทำงานรายเดือน</p>
+      </div>
+      <div class="hero-mark" aria-hidden="true">09:00</div>
+    </header>
+
+    <section class="card" aria-labelledby="entry-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">บันทึกเวลา</p>
+          <h2 id="entry-title">เข้าและออกงาน</h2>
+        </div>
+      </div>
+      <form id="entry-form">
+        <div class="fields">
+          <label>รหัสพนักงาน
+            <input id="employee" name="emp" maxlength="60" placeholder="เช่น emp-001" required autocomplete="off">
+          </label>
+          <label>วันและเวลา
+            <input id="timestamp" name="ts" type="datetime-local" required>
+          </label>
+        </div>
+        <div class="actions">
+          <button type="button" id="clock-in" class="primary">เข้างาน</button>
+          <button type="button" id="clock-out" class="secondary">ออกงาน</button>
+        </div>
+        <p id="message" class="message" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="card" aria-labelledby="report-title">
+      <div class="section-heading report-heading">
+        <div>
+          <p class="eyebrow">รายงาน</p>
+          <h2 id="report-title">สรุปรายเดือน</h2>
+        </div>
+        <form id="report-form" class="filters">
+          <label>ปี <input id="year" type="number" min="2000" max="2100" required></label>
+          <label>เดือน <select id="month" required></select></label>
+          <button type="submit" class="secondary">ดูรายงาน</button>
+        </form>
+      </div>
+      <div class="summary" id="summary" aria-live="polite"></div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>พนักงาน</th><th>วันทำงาน</th><th>ชั่วโมงรวม</th><th>วันที่มาสาย</th><th>โอที (ชม.)</th></tr>
+          </thead>
+          <tbody id="report-body"></tbody>
+        </table>
+      </div>
+      <p id="report-empty" class="empty" hidden>ไม่มีข้อมูลในเดือนนี้</p>
+    </section>
+
+    <section class="card" aria-labelledby="events-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ประวัติล่าสุด</p>
+          <h2 id="events-title">รายการเข้า-ออกงาน</h2>
+        </div>
+      </div>
+      <ul id="events" class="event-list"></ul>
+      <p id="events-empty" class="empty" hidden>ยังไม่มีรายการ</p>
+    </section>
+    <footer>ข้อมูลเก็บบนเครื่องที่รัน Python server นี้ · เวลาเป็นเวลาท้องถิ่น</footer>
+  </main>
+</body>
+</html>
